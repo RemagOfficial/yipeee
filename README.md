@@ -5,3 +5,4 @@
 - scailing prices
 - art (?)
 - price display
+- smooth number updating
