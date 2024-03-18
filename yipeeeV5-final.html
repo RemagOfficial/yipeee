@@ -121,9 +121,11 @@
 
         <div id="upgradeMenuDiv" style="display: none;">
           <h3>Upgrade Menu :3</h3>
-          <button type="button" onclick="upgradeLowerPricesAutoclickers()">Reduced Prices (Autoclicker)</button> <div id="totalPriceDecrease" style="display: inline-block; padding-inline: 10px;">-0%</div>
+          <button type="button" onclick="upgradeLowerPricesAutoclickers()">Reduced Prices (Autoclicker)</button> <div id="totalPriceDecreaseAutoclickers" style="display: inline-block; padding-inline: 10px;">Current Autoclicker Cost: 20.00 Cookies</div>
           <p></p>
-          <button type="button" onclick="upgradeFasterClicks()">Increased Production Rate</button> <div id="totalSpeedIncrease" style="display: inline-block; padding-inline: 10px;">+0%</div>
+          <button type="button" onclick="upgradeLowerPricesAutoclickerClickers()">Reduced Prices (Autoclicker Clicker)</button> <div id="totalPriceDecreaseAutoclickerClickers" style="display: inline-block; padding-inline: 10px;">Current Autoclicker Clicker Cost: 20.00 Autoclickers</div>
+          <p></p>
+          <button type="button" onclick="upgradeMoreCookiesPerClick()">Increased Production</button> <div id="totalProductionUpgrades" style="display: inline-block; padding-inline: 10px;">Current Autoclicker Production: 4/s</div>
         </div>
     </div>
     
@@ -133,15 +135,20 @@
         let AutoClickerCost = 20;
         let AutoClickerClickerCost = 20;
         let PriceDecreaseCost = 20;
+        let ProductionIncreaseCost = 20;
 
-        let cookies = 1000000;
+        let cookies = 0;
         let shopShown = false;
+
+        let AutoclickersProductionRate = 1;
 
         let AutoClickers = 0;
         let AutoClickerClickers = 0;
-        let CostReductionUpgrades = 0;
+        let CostReductionUpgradesAutoclicker = 0;
+        let CostReductionUpgradesAutoclickerClicker = 0;
 
-        let totalPriceDecrease = 0;
+        let totalPriceDecreaseAutoclickers = 0;
+        let totalPriceDecreaseAutoclickerClickers = 0;
 
         let formattedCookies = 0;
         let formattedAutoClickers = 0;
@@ -217,8 +224,31 @@
                 if (cookies >= PriceDecreaseCost) {
                     cookies = cookies - PriceDecreaseCost;
                     AutoClickerCost = (AutoClickerCost - (AutoClickerCost * 0.05)).toFixed(2);
-                    CostReductionUpgrades++;
+                    CostReductionUpgradesAutoclicker++;
                     document.getElementById("toasts").innerHTML = "Autoclicker Price Reduced by 5%";
+                    purchaseToast()
+                } else {
+                    alert("your too poor lol");
+                }
+        }
+
+        function upgradeLowerPricesAutoclickerClickers() {
+                if (cookies >= PriceDecreaseCost) {
+                    cookies = cookies - PriceDecreaseCost;
+                    AutoClickerClickerCost = (AutoClickerClickerCost - (AutoClickerClickerCost * 0.05)).toFixed(2);
+                    CostReductionUpgradesAutoclickerClicker++;
+                    document.getElementById("toasts").innerHTML = "Autoclicker Clicker Price Reduced by 5%";
+                    purchaseToast()
+                } else {
+                    alert("your too poor lol");
+                }
+        }
+
+        function upgradeMoreCookiesPerClick() {
+                if (cookies >= ProductionIncreaseCost) {
+                    cookies = cookies - ProductionIncreaseCost;
+                    AutoclickersProductionRate++
+                    document.getElementById("toasts").innerHTML = "Autoclicker Production Increased by 1";
                     purchaseToast()
                 } else {
                     alert("your too poor lol");
@@ -227,16 +257,16 @@
 
         const everyTick = () => {
             if (AutoClickers > 0) {
-                receiveCookieAuto((AutoClickers * 1));
+              let AutoclickersCookies = ((AutoClickers * 1) * AutoclickersProductionRate);
+              receiveCookieAuto(AutoclickersCookies);
             }
             if (AutoClickerClickers > 0) {
-                AutoClickers += (AutoClickerClickers * 1)
+              AutoClickers += (AutoClickerClickers * 1)
             }
-            let totalPriceDecrease = (CostReductionUpgrades * 10)
             let formattedCookies = Math.round(cookies).toLocaleString()
             let formattedAutoClickers = AutoClickers.toLocaleString()
             let formattedAutoClickerClickers = AutoClickerClickers.toLocaleString()
-            let formattedAutoClickersPerSec = (AutoClickers * 4).toLocaleString()
+            let formattedAutoClickersPerSec = (((AutoClickers * 1) * AutoclickersProductionRate) * 4).toLocaleString()
             let formattedAutoClickerClickersPerSec = (AutoClickerClickers * 4).toLocaleString()
             document.title = "this mf has " + formattedCookies + " cookies";
             document.getElementById("cookieDisplay").innerHTML = formattedCookies;
@@ -244,7 +274,9 @@
             document.getElementById("clickersPerSecondDisplay").innerHTML = "Clickers Per Second (CPS/s) " + formattedAutoClickerClickersPerSec + "/s";
             document.getElementById("numAutoclickers").innerHTML = formattedAutoClickers + "x Autoclickers";
             document.getElementById("numAutoclickerClickers").innerHTML = formattedAutoClickerClickers + "x Autoclicker Clickers";
-            document.getElementById("totalPriceDecrease").innerHTML = "Current Autoclicker Cost: " + AutoClickerCost;
+            document.getElementById("totalPriceDecreaseAutoclickers").innerHTML = "Current Autoclicker Cost: " + AutoClickerCost + " Cookies";
+            document.getElementById("totalPriceDecreaseAutoclickerClickers").innerHTML = "Current Autoclicker Clicker Cost: " + AutoClickerClickerCost + " Cookies";
+            document.getElementById("totalProductionUpgrades").innerHTML = "Current Autoclicker Production: " + (AutoclickersProductionRate * 4) + "/s";
         };
 
         setInterval(everyTick, 250); // Repeat every 1/4 second
