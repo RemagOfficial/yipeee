@@ -191,11 +191,11 @@
             
         }
 
-        function showToast(text, colour, boarderColor) {
+        function showToast(text, colour, borderColor) {
             var toaster = document.getElementById("toasts");
             toaster.innerHTML = text;
             toaster.style.backgroundColor = colour;
-            toaster.style.borderColor = borderColor
+            toaster.style.borderColor = borderColor;
             toaster.className = "show";
 
             setTimeout(function(){ toaster.className = toaster.className.replace("show", ""); }, 3000)
