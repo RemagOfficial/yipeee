@@ -182,7 +182,7 @@
               var cookieString = allCookies[i];
               var eqPos = cookieString.indexOf("=");
               var cookieName = eqPos > -1 ? cookieString.substr(0, eqPos) : cookieString;
-              document.cookie = cookieName + "; expires=Thu, 01 Jan 1970 00:00:00 GMT"; // Set expiration time to past
+              document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT"; // Set expiration time to past
 
             }
         }
