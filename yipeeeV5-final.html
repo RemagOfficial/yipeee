@@ -216,10 +216,9 @@
         function upgradeLowerPricesAutoclickers() {
                 if (cookies >= PriceDecreaseCost) {
                     cookies = cookies - PriceDecreaseCost;
-                    AutoClickerCost = AutoClickerCost - (AutoClickerCost * 0.10);
+                    AutoClickerCost = (AutoClickerCost - (AutoClickerCost * 0.05)).toFixed(2);
                     CostReductionUpgrades++;
-                    document.getElementById("toasts").innerHTML = "Autoclicker Price Reduced by 10%";
-                    document.getElementById("totalPriceDecrease").innerHTML = AutoClickerCost;
+                    document.getElementById("toasts").innerHTML = "Autoclicker Price Reduced by 5%";
                     purchaseToast()
                 } else {
                     alert("your too poor lol");
@@ -234,7 +233,7 @@
                 AutoClickers += (AutoClickerClickers * 1)
             }
             let totalPriceDecrease = (CostReductionUpgrades * 10)
-            let formattedCookies = cookies.toLocaleString()
+            let formattedCookies = Math.round(cookies).toLocaleString()
             let formattedAutoClickers = AutoClickers.toLocaleString()
             let formattedAutoClickerClickers = AutoClickerClickers.toLocaleString()
             let formattedAutoClickersPerSec = (AutoClickers * 4).toLocaleString()
@@ -245,7 +244,7 @@
             document.getElementById("clickersPerSecondDisplay").innerHTML = "Clickers Per Second (CPS/s) " + formattedAutoClickerClickersPerSec + "/s";
             document.getElementById("numAutoclickers").innerHTML = formattedAutoClickers + "x Autoclickers";
             document.getElementById("numAutoclickerClickers").innerHTML = formattedAutoClickerClickers + "x Autoclicker Clickers";
-            // document.getElementById("totalPriceDecrease").innerHTML = AutoClickerCost;
+            document.getElementById("totalPriceDecrease").innerHTML = "Current Autoclicker Cost: " + AutoClickerCost;
         };
 
         setInterval(everyTick, 250); // Repeat every 1/4 second
