@@ -298,6 +298,11 @@
             let formattedAutoClickerClickers = AutoClickerClickers.toLocaleString()
             let formattedAutoClickersPerSec = (((AutoClickers * 1) * AutoclickersProductionRate) * 4).toLocaleString()
             let formattedAutoClickerClickersPerSec = (AutoClickerClickers * 4).toLocaleString()
+            setCookie("AutoClickersProductionRate", AutoClickersProductionRate, 30);
+            setCookie("CostReductionUpgradesAutoclickerClicker", CostReductionUpgradesAutoclickerClicker, 30);
+            setCookie("CostReductionUpgradesAutoclicker", CostReductionUpgradesAutoclicker, 30);
+            setCookie("AutoClickerClickers", AutoClickerClickers, 30);
+            setCookie("AutoClickers", AutoClickers, 30);
             document.title = "this mf has " + formattedCookies + " cookies";
             document.getElementById("cookieDisplay").innerHTML = formattedCookies;
             document.getElementById("cookiePerSecondDisplay").innerHTML = "Cookies Per Second (CPS/s) " + formattedAutoClickersPerSec + "/s";
@@ -307,11 +312,6 @@
             document.getElementById("totalPriceDecreaseAutoclickers").innerHTML = "Current Autoclicker Cost: " + AutoClickerCost + " Cookies";
             document.getElementById("totalPriceDecreaseAutoclickerClickers").innerHTML = "Current Autoclicker Clicker Cost: " + AutoClickerClickerCost + " Cookies";
             document.getElementById("totalProductionUpgrades").innerHTML = "Current Autoclicker Production: " + (AutoclickersProductionRate * 4) + "/s";
-            setCookie("AutoClickersProductionRate", AutoClickersProductionRate, 30);
-            setCookie("CostReductionUpgradesAutoclickerClicker", CostReductionUpgradesAutoclickerClicker, 30);
-            setCookie("CostReductionUpgradesAutoclicker", CostReductionUpgradesAutoclicker, 30);
-            setCookie("AutoClickerClickers", AutoClickerClickers, 30);
-            setCookie("AutoClickers", AutoClickers, 30);
         };
 
         setInterval(everyTick, 250); // Repeat every 1/4 second
