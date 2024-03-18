@@ -241,6 +241,7 @@
                 } else {
                   showToast("You cannot afford an autoclicker!", "rgb(121, 28, 28)")
                 }
+                setCookie("AutoClickers", AutoClickers, 30);
         }
 
         function purchaseAutoClickerClicker() {
@@ -251,6 +252,7 @@
                 } else {
                   showToast("You cannot afford an autoclicker clicker!", "rgb(121, 28, 28)")
                 }
+                setCookie("AutoClickerClickers", AutoClickerClickers, 30);
         }
 
         function upgradeLowerPricesAutoclickers() {
@@ -262,6 +264,7 @@
                 } else {
                   showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
                 }
+                setCookie("CostReductionUpgradesAutoclicker", CostReductionUpgradesAutoclicker, 30);
         }
 
         function upgradeLowerPricesAutoclickerClickers() {
@@ -273,6 +276,7 @@
                 } else {
                   showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
                 }
+                setCookie("CostReductionUpgradesAutoclickerClicker", CostReductionUpgradesAutoclickerClicker, 30);
         }
 
         function upgradeMoreCookiesPerClick() {
@@ -283,6 +287,7 @@
                 } else {
                   showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
                 }
+                setCookie("AutoClickersProductionRate", AutoClickersProductionRate, 30);
         }
 
         const everyTick = () => {
@@ -298,11 +303,6 @@
             let formattedAutoClickerClickers = AutoClickerClickers.toLocaleString()
             let formattedAutoClickersPerSec = (((AutoClickers * 1) * AutoclickersProductionRate) * 4).toLocaleString()
             let formattedAutoClickerClickersPerSec = (AutoClickerClickers * 4).toLocaleString()
-            setCookie("AutoClickersProductionRate", AutoClickersProductionRate, 30);
-            setCookie("CostReductionUpgradesAutoclickerClicker", CostReductionUpgradesAutoclickerClicker, 30);
-            setCookie("CostReductionUpgradesAutoclicker", CostReductionUpgradesAutoclicker, 30);
-            setCookie("AutoClickerClickers", AutoClickerClickers, 30);
-            setCookie("AutoClickers", AutoClickers, 30);
             document.title = "this mf has " + formattedCookies + " cookies";
             document.getElementById("cookieDisplay").innerHTML = formattedCookies;
             document.getElementById("cookiePerSecondDisplay").innerHTML = "Cookies Per Second (CPS/s) " + formattedAutoClickersPerSec + "/s";
