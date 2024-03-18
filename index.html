@@ -191,10 +191,11 @@
             
         }
 
-        function showToast(text, colour) {
+        function showToast(text, colour, boarderColor) {
             var toaster = document.getElementById("toasts");
             toaster.innerHTML = text;
             toaster.style.backgroundColor = colour;
+            toaster.style.borderColor = borderColor
             toaster.className = "show";
 
             setTimeout(function(){ toaster.className = toaster.className.replace("show", ""); }, 3000)
@@ -204,7 +205,7 @@
                 if (cookies >= AutoClickerCost) {
                     cookies = cookies - AutoClickerCost;
                     AutoClickers++;
-                    showToast("Autoclicker Purchased", "#333")
+                    showToast("Autoclicker Purchased", "#333", "#000")
                 } else {
                   showToast("You cannot afford an autoclicker!", "rgb(121, 28, 28)")
                 }
@@ -214,7 +215,7 @@
                 if (AutoClickers >= AutoClickerClickerCost) {
                     AutoClickers = AutoClickers - AutoClickerClickerCost;
                     AutoClickerClickers++;
-                    showToast("Autoclicker Clicker Purchased", "#333")
+                    showToast("Autoclicker Clicker Purchased", "#333", "#000")
                 } else {
                   showToast("You cannot afford an autoclicker clicker!", "rgb(121, 28, 28)")
                 }
@@ -225,7 +226,7 @@
                     cookies = cookies - PriceDecreaseCost;
                     AutoClickerCost = (AutoClickerCost - (AutoClickerCost * 0.05)).toFixed(2);
                     CostReductionUpgradesAutoclicker++;
-                    showToast("Decreased autoclicker price by 5%", "#333")
+                    showToast("Decreased autoclicker price by 5%", "#333", "#000")
                 } else {
                   showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
                 }
@@ -236,7 +237,7 @@
                     cookies = cookies - PriceDecreaseCost;
                     AutoClickerClickerCost = (AutoClickerClickerCost - (AutoClickerClickerCost * 0.05)).toFixed(2);
                     CostReductionUpgradesAutoclickerClicker++;
-                    showToast("Decreased autoclicker clicker price by 5%", "#333")
+                    showToast("Decreased autoclicker clicker price by 5%", "#333", "#000")
                 } else {
                   showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
                 }
@@ -246,7 +247,7 @@
                 if (cookies >= ProductionIncreaseCost) {
                     cookies = cookies - ProductionIncreaseCost;
                     AutoclickersProductionRate++
-                    showToast("Increased autoclicker production by 1", "#333")
+                    showToast("Increased autoclicker production by 1", "#333", "#000")
                 } else {
                   showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
                 }
