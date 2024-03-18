@@ -197,4 +197,8 @@
     document.getElementById("toggleShop").onclick = () => toggleShopDisplay();
     document.getElementById("shop_1").onclick = () => purchaseAutoClicker();
     document.getElementById("shop_2").onclick = () => purchaseAutoClickerClicker();
+    document.getElementById("toggleUpgrade").onclick = () => toggleUpgradeDisplay();
+    document.getElementById("upgrade_1").onclick = () => upgradeLowerPricesAutoclickers();
+    document.getElementById("upgrade_2").onclick = () => upgradeLowerPricesAutoclickerClickers();
+    document.getElementById("upgrade_3").onclick = () => upgradeMoreCookiesPerClick();
 })();
