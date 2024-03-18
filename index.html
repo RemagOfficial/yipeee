@@ -177,6 +177,7 @@
 
         function clearCookies() {
             var allCookies = document.cookie.split(";"); // Get all cookies
+            console.log(allCookies);
             for (var i = 0; i < allCookies.length; i++) {
               var cookieString = allCookies[i];
               var eqPos = cookieString.indexOf("=");
