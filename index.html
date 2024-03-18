@@ -190,9 +190,10 @@
             
         }
 
-        function purchaseToast() {
+        function showToast(text, colour) {
             var toaster = document.getElementById("toasts");
-
+            toaster.innerHTML = text;
+            toaster.style.backgroundColor = colour;
             toaster.className = "show";
 
             setTimeout(function(){ toaster.className = toaster.className.replace("show", ""); }, 3000)
@@ -202,10 +203,9 @@
                 if (cookies >= AutoClickerCost) {
                     cookies = cookies - AutoClickerCost;
                     AutoClickers++;
-                    document.getElementById("toasts").innerHTML = "Autoclicker Purchased";
-                    purchaseToast()
+                    showToast("Autoclicker Purchased", "#333")
                 } else {
-                    alert("your too poor lol");
+                  showToast("You cannot afford an autoclicker!", "rgb(121, 28, 28)")
                 }
         }
 
@@ -213,10 +213,9 @@
                 if (AutoClickers >= AutoClickerClickerCost) {
                     AutoClickers = AutoClickers - AutoClickerClickerCost;
                     AutoClickerClickers++;
-                    document.getElementById("toasts").innerHTML = "Autoclicker Clicker Purchased";
-                    purchaseToast()
+                    showToast("Autoclicker Clicker Purchased", "#333")
                 } else {
-                    alert("your too poor lol");
+                  showToast("You cannot afford an autoclicker clicker!", "rgb(121, 28, 28)")
                 }
         }
 
@@ -225,10 +224,9 @@
                     cookies = cookies - PriceDecreaseCost;
                     AutoClickerCost = (AutoClickerCost - (AutoClickerCost * 0.05)).toFixed(2);
                     CostReductionUpgradesAutoclicker++;
-                    document.getElementById("toasts").innerHTML = "Autoclicker Price Reduced by 5%";
-                    purchaseToast()
+                    showToast("Decreased autoclicker price by 5%", "#333")
                 } else {
-                    alert("your too poor lol");
+                  showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
                 }
         }
 
@@ -237,10 +235,9 @@
                     cookies = cookies - PriceDecreaseCost;
                     AutoClickerClickerCost = (AutoClickerClickerCost - (AutoClickerClickerCost * 0.05)).toFixed(2);
                     CostReductionUpgradesAutoclickerClicker++;
-                    document.getElementById("toasts").innerHTML = "Autoclicker Clicker Price Reduced by 5%";
-                    purchaseToast()
+                    showToast("Decreased autoclicker clicker price by 5%", "#333")
                 } else {
-                    alert("your too poor lol");
+                  showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
                 }
         }
 
@@ -248,10 +245,9 @@
                 if (cookies >= ProductionIncreaseCost) {
                     cookies = cookies - ProductionIncreaseCost;
                     AutoclickersProductionRate++
-                    document.getElementById("toasts").innerHTML = "Autoclicker Production Increased by 1";
-                    purchaseToast()
+                    showToast("Increased autoclicker production by 1", "#333")
                 } else {
-                    alert("your too poor lol");
+                  showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
                 }
         }
 
