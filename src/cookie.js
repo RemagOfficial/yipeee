@@ -201,4 +201,5 @@
     document.getElementById("upgrade_1").onclick = () => upgradeLowerPricesAutoclickers();
     document.getElementById("upgrade_2").onclick = () => upgradeLowerPricesAutoclickerClickers();
     document.getElementById("upgrade_3").onclick = () => upgradeMoreCookiesPerClick();
+    document.getElementById("empty_jar").onclick = () => clearCookies();
 })();
