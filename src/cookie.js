@@ -1,7 +1,7 @@
 (function () {
     console.debug("Cookie clicker init");
-    let AutoClickerCost = 20;
-    let AutoClickerClickerCost = 20;
+    let AutoClickerCost = getCookie("AutoClickerCost") ? parseInt(getCookie("AutoClickerCost")) : 20;
+    let AutoClickerClickerCost = getCookie("AutoClickerClickerCost") ? parseInt(getCookie("AutoClickerClickerCost")) : 20;
     let PriceDecreaseCost = 200;
     let ProductionIncreaseCost = 200;
     let cookies = getCookie("cookies") ? parseInt(getCookie("cookies")) : 0;
@@ -140,6 +140,7 @@
             showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
         }
         setCookie("CostReductionUpgradesAutoclicker", CostReductionUpgradesAutoclicker, 30);
+        setCookie("AutoClickerCost", AutoClickerCost, 30);
     }
 
     function upgradeLowerPricesAutoclickerClickers() {
@@ -152,6 +153,7 @@
             showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
         }
         setCookie("CostReductionUpgradesAutoclickerClicker", CostReductionUpgradesAutoclickerClicker, 30);
+        setCookie("AutoClickerClickerCost", AutoClickerClickerCost, 30);
     }
 
     function upgradeMoreCookiesPerClick() {
@@ -162,7 +164,7 @@
         } else {
             showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
         }
-        setCookie("AutoClickersProductionRate", AutoClickersProductionRate, 30);
+        setCookie("AutoClickersProductionRate", AutoclickersProductionRate, 30);
     }
 
     const everyTick = () => {
