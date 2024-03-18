@@ -199,6 +199,7 @@
             let formattedCookies = cookies.toLocaleString()
             document.getElementById("cookieDisplay").innerHTML = formattedCookies;
             document.title = "this mf has " + formattedCookies + " cookies";
+            setCookie("cookies", cookies, 30);
         }
 
         function toggleShopDisplay() {
