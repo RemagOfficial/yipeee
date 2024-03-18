@@ -110,7 +110,7 @@
         <p id="clickersPerSecondDisplay">Clickers Per Second (CPS/s) 0/s</p>
         <button type="button" onclick="receiveCookie(1)" id="cookie"><img src="https://i.imgur.com/rUIo1wW.png"></button>
         <p></p>
-        <button type="button" onclick="toggleShopDisplay()">Toggle Shop View</button> <button type="button" onclick="toggleUpgradeDisplay()">Toggle Upgrade View</button> <button type="button" onclick="clearCookies()"; style="background-color: crimson;">Clear Browser Cookies</button>
+        <button type="button" onclick="toggleShopDisplay()">Toggle Shop View</button> <button type="button" onclick="toggleUpgradeDisplay()">Toggle Upgrade View</button>
         <div id="clicks">+1</div>
         <div id="toasts">empty</div>
 
@@ -173,16 +173,6 @@
                 if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
             }
             return null;
-        }
-
-        function clearCookies() {
-          var browserCookies = document.cookie.split(';');
-          console.log(browserCookies);
- 
-          // set 1 Jan, 1970 expiry for every cookies
-          for (var i = 0; i < browserCookies.length; i++)
-          document.cookie = browserCookies[i] + "=;expires=" + new Date(1).toUTCString();
-          console.log(browserCookies);
         }
 
         function receiveCookie(amount) {
