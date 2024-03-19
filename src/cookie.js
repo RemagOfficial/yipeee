@@ -179,7 +179,7 @@
             slideMenuShown = false;
         } else {
             document.getElementById("slideMenuDiv").style.display = "block";
-            document.getElementById("slideMenuArrow").style.left = "20%";
+            document.getElementById("slideMenuArrow").style.left = "500px";
             document.getElementById("slideMenuArrow").src = "src/assets/textures/arrowIn.png"
             slideMenuShown = true;
         }
