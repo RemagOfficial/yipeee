@@ -131,7 +131,6 @@
             cookies = cookies - AutoClickerCost;
             AutoClickers++;
             AutoClickerCost = Math.round((AutoClickerCost + (AutoClickerCost * 0.20)));
-            console.log(AutoClickerCost)
             showToast("Autoclicker Purchased", "#333", "#000")
         } else {
             showToast("You cannot afford an autoclicker!", "rgb(121, 28, 28)")
