@@ -21,6 +21,15 @@
   color: #fff;
   font-family: "Kongtext";
   font-size: small;
+  user-select: none;
+}
+
+button {
+  background: url(src/assets/textures/button.png) no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 1px;
+  border: white;
 }
     /* The snackbar - position it at the bottom and in the middle of the screen */
 #toasts {
@@ -105,7 +114,9 @@
   }
 
   #cookie {
-    background: none;
+    height: 160px;
+    width: 160px;
+    background: url(src/assets/textures/cookie.png);
     border: none;
   }
 </style>
@@ -117,7 +128,7 @@
         <p id="cookieDisplay">0</p>
         <p id="cookiePerSecondDisplay">Cookies Per Second (CPS/s) 0/s</p>
         <p id="clickersPerSecondDisplay">Clickers Per Second (CPS/s) 0/s</p>
-        <button type="button" id="cookie"><img src="src/assets/textures/cookie.png"></button>
+        <button type="button" id="cookie"><img></button>
         <p></p>
         <button type="button" id="toggleShop">Toggle Shop View</button>
         <button type="button" id="toggleUpgrade">Toggle Upgrade View</button>
