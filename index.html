@@ -119,6 +119,15 @@ button {
     overflow-y: scroll;
     scrollbar-width: none;
   }
+
+  #sticky {
+    position: sticky;
+    top: 0;
+    left: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #161616;
+  }
 </style>
 <body style="background-color: #333;">
   <img id="slideMenuArrow" src="src/assets/textures/arrow.png">
@@ -139,8 +148,14 @@ button {
         <div id="toasts">empty</div>
 <div id="slideMenuDiv" style="display: none;">
   <div id="changeLog">
-    <p style="text-align: center;">Changelog</p>
+    <div id="sticky">
+      <p style="text-align: center;">Changelog</p>
+    </div>
     <br>
+    <br>
+    <p style="text-align: center;">V1.2.10</p>
+    <br>
+    <p>- Made "Changelog" Text Stay at Top of Changelog</p>
     <br>
     <p style="text-align: center;">V1.2.9</p>
     <br>
@@ -186,6 +201,6 @@ button {
           <button type="button" id="upgrade_3">Increased Production</button> <div id="totalProductionUpgrades" style="display: inline-block; padding-inline: 10px;">Current Autoclicker Production: 4/s</div>
         </div>
     </div>
-<div id="versionNumber" style="position: fixed; bottom: 0; color: #ffffff;">V1.2.9 PUBLIC</div>
+<div id="versionNumber" style="position: fixed; bottom: 0; color: #ffffff;">V1.2.10 PUBLIC</div>
 </body>
 </html>
