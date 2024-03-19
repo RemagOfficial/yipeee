@@ -1,59 +1,66 @@
 (function () {
     console.debug("Cookie clicker init");
-    let AutoClickerCost = getCookie("AutoClickerCost") ? parseInt(getCookie("AutoClickerCost")) : 20;
-    let AutoClickerClickerCost = getCookie("AutoClickerClickerCost") ? parseInt(getCookie("AutoClickerClickerCost")) : 20;
+    let AutoClickerCost = 20;
+    let AutoClickerClickerCost = 20;
     let PriceDecreaseCost = 200;
     let ProductionIncreaseCost = 200;
-    let cookies = getCookie("cookies") ? parseInt(getCookie("cookies")) : 0;
+    let cookies = 0;
     let shopShown = false;
 
-    let AutoclickersProductionRate = getCookie("AutoClickersProductionRate") ? parseInt(getCookie("AutoClickersProductionRate")) : 1;
+    let AutoclickersProductionRate = 1;
 
-    let AutoClickers = getCookie("AutoClickers") ? parseInt(getCookie("AutoClickers")) : 0;
-    let AutoClickerClickers = getCookie("AutoClickerClickers") ? parseInt(getCookie("AutoClickerClickers")) : 0;
-    let CostReductionUpgradesAutoclicker = getCookie("CostReductionUpgradesAutoclicker") ? parseInt(getCookie("CostReductionUpgradesAutoclicker")) : 0;
-    let CostReductionUpgradesAutoclickerClicker = getCookie("CostReductionUpgradesAutoclickerClicker") ? parseInt(getCookie("CostReductionUpgradesAutoclickerClicker")) : 0;
+    let AutoClickers = 0;
+    let AutoClickerClickers = 0;
+    let CostReductionUpgradesAutoclicker = 0;
+    let CostReductionUpgradesAutoclickerClicker = 0;
 
     let formattedCookies = 0;
     let formattedAutoClickers = 0;
     let formattedAutoClickerClickers = 0;
 
-    function setCookie(name, value, days) {
-        let expires = "";
-        if (days) {
-            let date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "") + expires + "; path=/";
-    }
+    const fileInput = document.getElementById('saveImport');
 
-    function getCookie(name) {
-        let nameEQ = name + "=";
-        let cs = document.cookie;
-        if (cs == 0) return null;
-        let ca = cs.split(';');
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-        }
-        return null;
-    }
+    document.addEventListener('DOMContentLoaded', function() {
 
-    function clearCookies() {
-        let browserCookies = document.cookie.split(';');
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
 
-        console.log(browserCookies);
+            if (file) {
+                const reader = new FileReader();
 
-        // set 1 Jan, 1970 expiry for every cookies
-        for (let i = 0; i < browserCookies.length; i++) {
-            let s = browserCookies[i].trim().split("=");
-            document.cookie = s[0] + "=0 ;expires=" + new Date(0).toUTCString();
-        }
-        delete document.cookie
-        console.log(browserCookies);
-    }
+                reader.onload = function(e) {
+                    const contents = e.target.result;
+
+                    try {
+                        const jsonData = JSON.parse(contents); // Parse JSON data
+                        // Now you can access the values from jsonData
+                        console.log('Parsed JSON data:', jsonData);
+
+                        const cookiesFromJSON = jsonData.Cookies;
+                        const AutoClickersFromJSON = jsonData.AutoClickers;
+                        const AutoClickerClickersFromJSON = jsonData.AutoClickerClickers;
+                        const CostReductionUpgradesAutoclickerFromJSON = jsonData.CostReductionUpgradesAutoclicker;
+                        const CostReductionUpgradesAutoclickerClickerFromJSON = jsonData.CostReductionUpgradesAutoclickerClicker;
+                        const AutoClickerCostFromJSON = jsonData.AutoClickerCost;
+                        const AutoClickerClickerCostFromJSON = jsonData.AutoClickerClickerCost;
+
+                        cookies = cookiesFromJSON;
+                        AutoClickers = AutoClickersFromJSON;
+                        AutoClickerClickers = AutoClickerClickersFromJSON;
+                        CostReductionUpgradesAutoclicker = CostReductionUpgradesAutoclickerFromJSON;
+                        CostReductionUpgradesAutoclickerClicker = CostReductionUpgradesAutoclickerClickerFromJSON;
+                        AutoClickerCost = AutoClickerCostFromJSON;
+                        AutoClickerClickerCost = AutoClickerClickerCostFromJSON;
+                    } catch (error) {
+                        console.error('Error parsing JSON:', error);
+                    }
+                };
+
+                reader.readAsText(file); // Read the file as text
+            }
+        }) 
+
+    })
 
     function receiveCookie(amount) {
         cookies += amount;
@@ -116,7 +123,6 @@
         } else {
             showToast("You cannot afford an autoclicker!", "rgb(121, 28, 28)")
         }
-        setCookie("AutoClickers", AutoClickers, 30);
     }
 
     function purchaseAutoClickerClicker() {
@@ -127,7 +133,6 @@
         } else {
             showToast("You cannot afford an autoclicker clicker!", "rgb(121, 28, 28)")
         }
-        setCookie("AutoClickerClickers", AutoClickerClickers, 30);
     }
 
     function upgradeLowerPricesAutoclickers() {
@@ -139,8 +144,6 @@
         } else {
             showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
         }
-        setCookie("CostReductionUpgradesAutoclicker", CostReductionUpgradesAutoclicker, 30);
-        setCookie("AutoClickerCost", AutoClickerCost, 30);
     }
 
     function upgradeLowerPricesAutoclickerClickers() {
@@ -152,8 +155,6 @@
         } else {
             showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
         }
-        setCookie("CostReductionUpgradesAutoclickerClicker", CostReductionUpgradesAutoclickerClicker, 30);
-        setCookie("AutoClickerClickerCost", AutoClickerClickerCost, 30);
     }
 
     function upgradeMoreCookiesPerClick() {
@@ -164,7 +165,6 @@
         } else {
             showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
         }
-        setCookie("AutoClickersProductionRate", AutoclickersProductionRate, 30);
     }
 
     const everyTick = () => {
@@ -191,6 +191,29 @@
         document.getElementById("totalProductionUpgrades").innerHTML = "Current Autoclicker Production: " + (AutoclickersProductionRate * 4) + "/s";
     };
 
+    function saveProgress() {
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = (currentDate.getMonth() + 1); // Month is zero-indexed (0 for January, 11 for December)
+        const day = currentDate.getDate();
+        const hours = currentDate.getHours();
+        const minutes = currentDate.getMinutes();
+        const seconds = currentDate.getSeconds();
+        var allVars = {"Cookies" : cookies,
+                        "AutoClickers" : AutoClickers,
+                        "AutoClickerClickers" : AutoClickerClickers,
+                        "CostReductionUpgradesAutoclicker" : CostReductionUpgradesAutoclicker,
+                        "CostReductionUpgradesAutoclickerClicker" : CostReductionUpgradesAutoclickerClicker,
+                        "AutoClickerCost" : AutoClickerCost,
+                        "AutoClickerClickerCost" : AutoClickerClickerCost};
+        var allVarsString = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(allVars));
+        var a = document.createElement('a');
+        a.href = 'data:' + allVarsString;
+        a.download = `save-${year}-${month}-${day}-${minutes}:${seconds}.json`;
+        a.innerHTML = '';
+        a.click();
+    }
+
     setInterval(everyTick, 250); // Repeat every 1/4 second
 
     document.getElementById("cookie").onclick = () => receiveCookie(1);
@@ -201,5 +224,5 @@
     document.getElementById("upgrade_1").onclick = () => upgradeLowerPricesAutoclickers();
     document.getElementById("upgrade_2").onclick = () => upgradeLowerPricesAutoclickerClickers();
     document.getElementById("upgrade_3").onclick = () => upgradeMoreCookiesPerClick();
-    document.getElementById("empty_jar").onclick = () => clearCookies();
+    document.getElementById("downloadSave").onclick = () => saveProgress();
 })();
