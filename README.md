@@ -2,7 +2,7 @@
 
 
 ### To-do
-- scailing prices
+- ~~scailing prices~~
 - art (?)
 - ~~price display~~
 - smooth number updating
