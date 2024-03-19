@@ -43,6 +43,7 @@
                         const CostReductionUpgradesAutoclickerClickerFromJSON = jsonData.CostReductionUpgradesAutoclickerClicker;
                         const AutoClickerCostFromJSON = jsonData.AutoClickerCost;
                         const AutoClickerClickerCostFromJSON = jsonData.AutoClickerClickerCost;
+                        const AutoclickersProductionRateFromJSON = jsonData.AutoclickersProductionRate
 
                         cookies = cookiesFromJSON;
                         AutoClickers = AutoClickersFromJSON;
@@ -51,6 +52,7 @@
                         CostReductionUpgradesAutoclickerClicker = CostReductionUpgradesAutoclickerClickerFromJSON;
                         AutoClickerCost = AutoClickerCostFromJSON;
                         AutoClickerClickerCost = AutoClickerClickerCostFromJSON;
+                        AutoclickersProductionRate = AutoclickersProductionRateFromJSON;
                     } catch (error) {
                         console.error('Error parsing JSON:', error);
                     }
@@ -204,7 +206,8 @@
                         "CostReductionUpgradesAutoclicker" : CostReductionUpgradesAutoclicker,
                         "CostReductionUpgradesAutoclickerClicker" : CostReductionUpgradesAutoclickerClicker,
                         "AutoClickerCost" : AutoClickerCost,
-                        "AutoClickerClickerCost" : AutoClickerClickerCost};
+                        "AutoClickerClickerCost" : AutoClickerClickerCost,
+                        "AutoclickersProductionRate" : AutoclickersProductionRate};
         var allVarsString = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(allVars));
         var a = document.createElement('a');
         a.href = 'data:' + allVarsString;
