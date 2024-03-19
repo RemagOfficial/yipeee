@@ -8,6 +8,7 @@
 
 
     let shopShown = false;
+    let upgradeShown = false;
     let slideMenuShown = false;
 
     let AutoclickersProductionRate = 1;
@@ -98,13 +99,13 @@
     }
 
     function toggleUpgradeDisplay() {
-        if (shopShown) {
+        if (upgradeShown) {
             AutoClickers > 0;
             document.getElementById("upgradeMenuDiv").style.display = "none";
-            shopShown = false;
+            upgradeShown = false;
         } else {
             document.getElementById("upgradeMenuDiv").style.display = "block";
-            shopShown = true;
+            upgradeShown = true;
         }
 
     }
