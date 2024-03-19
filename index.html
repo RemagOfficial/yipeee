@@ -119,8 +119,30 @@ button {
     background: url(src/assets/textures/cookie.png);
     border: none;
   }
+
+  #slideMenuArrow {
+    z-index: 1;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    top: 30%;
+  }
+
+  #slideMenuDiv {
+    position: absolute;
+    left: 50px;
+    top: 10%;
+  }
+
+  #changeLog {
+    padding-top: 10px;
+    z-index: 0;
+    width: 480px;
+    height: 1000px;
+  }
 </style>
 <body style="background-color: #333;">
+  <img id="slideMenuArrow" src="src/assets/textures/arrow.png">
     <div class="content">
         <h1>JavaScript gaming</h1>
         <p>the cookie clicker is real</p>
@@ -136,6 +158,17 @@ button {
         <input type="file" id="saveImport">
         <div id="clicks">+1</div>
         <div id="toasts">empty</div>
+<div id="slideMenuDiv" style="display: none;">
+  <div id="changeLog" style="background-color: #252525; text-align: left;">
+    <p style="text-align: center;">Changelog</p>
+    <br>
+    <br>
+    <p style="text-align: center;">V1.2.4</p>
+    <br>
+    <p>-Added changelog slide menu</p>
+    <p>-Its cool right?</p>
+  </div>
+</div>
 
         <div id="shopMenuDiv" style="display: none;">
             <h3>Shop Menu :3</h3>

@@ -5,7 +5,10 @@
     let PriceDecreaseCost = 200;
     let ProductionIncreaseCost = 200;
     let cookies = 0;
+
+
     let shopShown = false;
+    let slideMenuShown = false;
 
     let AutoclickersProductionRate = 1;
 
@@ -168,6 +171,21 @@
         }
     }
 
+    function openSlideMenu() {
+        if (slideMenuShown) {
+            document.getElementById("slideMenuDiv").style.display = "none";
+            document.getElementById("slideMenuArrow").style.left = "0px";
+            document.getElementById("slideMenuArrow").src = "src/assets/textures/arrow.png"
+            slideMenuShown = false;
+        } else {
+            document.getElementById("slideMenuDiv").style.display = "block";
+            document.getElementById("slideMenuArrow").style.left = "20%";
+            document.getElementById("slideMenuArrow").src = "src/assets/textures/arrowIn.png"
+            slideMenuShown = true;
+        }
+
+    }
+
     const everyTick = () => {
         if (AutoClickers > 0) {
             let AutoclickersCookies = ((AutoClickers * 1) * AutoclickersProductionRate);
@@ -227,4 +245,5 @@
     document.getElementById("upgrade_2").onclick = () => upgradeLowerPricesAutoclickerClickers();
     document.getElementById("upgrade_3").onclick = () => upgradeMoreCookiesPerClick();
     document.getElementById("downloadSave").onclick = () => saveProgress();
+    document.getElementById("slideMenuArrow").onclick = () => openSlideMenu();
 })();
