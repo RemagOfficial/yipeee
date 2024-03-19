@@ -176,12 +176,12 @@
 
     function openSlideMenu() {
         if (slideMenuShown) {
-            document.getElementById("slideMenuDiv").style.display = "none";
+            document.getElementById("changeLog").style.display = "none";
             document.getElementById("slideMenuArrow").style.left = "0px";
             document.getElementById("slideMenuArrow").src = "src/assets/textures/arrow.png"
             slideMenuShown = false;
         } else {
-            document.getElementById("slideMenuDiv").style.display = "block";
+            document.getElementById("changeLog").style.display = "block";
             document.getElementById("slideMenuArrow").style.left = "500px";
             document.getElementById("slideMenuArrow").src = "src/assets/textures/arrowIn.png"
             slideMenuShown = true;
@@ -212,6 +212,11 @@
         document.getElementById("totalPriceDecreaseAutoclickers").innerHTML = "Current Autoclicker Cost: " + AutoClickerCost + " Cookies";
         document.getElementById("totalPriceDecreaseAutoclickerClickers").innerHTML = "Current Autoclicker Clicker Cost: " + AutoClickerClickerCost + " AutoClickers";
         document.getElementById("totalProductionUpgrades").innerHTML = "Current Autoclicker Production: " + formattedAutoClickersProductionRate + "/s";
+        document.getElementById("autoclickerPrice").innerHTML = "Autoclicker Price: " + AutoClickerCost + " Cookies";
+        document.getElementById("autoclickerClickerPrice").innerHTML = "Autoclicker Clicker Price: " + AutoClickerClickerCost + " Cookies";
+        document.getElementById("autoclickerCostDecreasePrice").innerHTML = "Upgrade Price: " + PriceDecreaseCost + " Cookies";
+        document.getElementById("autoclickerClickerCostDecreasePrice").innerHTML = "Upgrade Price: " + PriceDecreaseCost + " Cookies";
+        document.getElementById("autoclickerProductionIncreasePrice").innerHTML = "Upgrade Price: " + ProductionIncreaseCost + " Cookies";
     };
 
     function saveProgress() {

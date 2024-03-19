@@ -111,10 +111,13 @@ button {
   }
 
   #changeLog {
+    position: absolute;
+    left: 50px;
+    top: 10%;
     padding-top: 10px;
     z-index: 0;
     width: 480px;
-    height: 1000px;
+    height: 80%;
     background-color: #252525;
     text-align: left;
     overflow-y: scroll;
@@ -147,12 +150,17 @@ button {
         <input type="file" id="saveImport">
         <div id="clicks" style="display: none; text-align: left; height: auto; width: min-content;">+1</div>
         <div id="toasts">empty</div>
-<div id="slideMenuDiv" style="display: none;">
-  <div id="changeLog">
+
+  <div id="changeLog"  style="display: none;">
     <div id="sticky">
       <p style="text-align: center;">Changelog</p>
     </div>
     <br>
+    <br>
+    <p style="text-align: center;">V1.3.0</p>
+    <br>
+    <p>- Finally Added Price Display</p>
+    <p>- Fixed Slide Menu on Smaller Displays</p>
     <br>
     <p style="text-align: center;">V1.2.11</p>
     <br>
@@ -189,24 +197,25 @@ button {
     <p>- Added changelog slide menu</p>
     <p>- Its cool right?</p>
   </div>
-</div>
+  <div id="slideMenuDiv" style="display: none;">
+  </div>
 
         <div id="shopMenuDiv" style="display: none;">
             <h3>Shop Menu :3</h3>
-            <button type="button" id="shop_1">Buy Autoclicker</button> <div id="numAutoclickers" style="display: inline-block; padding-inline: 10px;">0x Autoclickers</div>
+            <button type="button" id="shop_1">Buy Autoclicker</button> <div id="numAutoclickers" style="display: inline-block; padding-inline: 10px;">0x Autoclickers</div><div id="autoclickerPrice" style="display: inline-block; padding-inline: 10px; color: gold;">Autoclicker Price: 20.00 Cookies</div>
             <p></p>
-            <button type="button" id="shop_2">Buy Autoclicker Clicker</button> <div id="numAutoclickerClickers" style="display: inline-block; padding-inline: 10px;">0x Autoclicker Clickers</div>
+            <button type="button" id="shop_2">Buy Autoclicker Clicker</button> <div id="numAutoclickerClickers" style="display: inline-block; padding-inline: 10px;">0x Autoclicker Clickers</div><div id="autoclickerClickerPrice" style="display: inline-block; padding-inline: 10px; color: gold;">Autoclicker Clicker Price: 20.00 Autoclickers</div>
         </div>
 
         <div id="upgradeMenuDiv" style="display: none;">
           <h3>Upgrade Menu :3</h3>
-          <button type="button" id="upgrade_1">Reduced Prices (Autoclicker)</button> <div id="totalPriceDecreaseAutoclickers" style="display: inline-block; padding-inline: 10px;">Current Autoclicker Cost: 20.00 Cookies</div>
+          <button type="button" id="upgrade_1">Reduced Prices (Autoclicker)</button> <div id="totalPriceDecreaseAutoclickers" style="display: inline-block; padding-inline: 10px;">Current Autoclicker Cost: 20.00 Cookies</div><div id="autoclickerCostDecreasePrice" style="display: inline-block; padding-inline: 10px; color: gold;">upgrade Price: 200.00 Cookies</div>
           <p></p>
-          <button type="button" id="upgrade_2">Reduced Prices (Autoclicker Clicker)</button> <div id="totalPriceDecreaseAutoclickerClickers" style="display: inline-block; padding-inline: 10px;">Current Autoclicker Clicker Cost: 20.00 Autoclickers</div>
+          <button type="button" id="upgrade_2">Reduced Prices (Autoclicker Clicker)</button> <div id="totalPriceDecreaseAutoclickerClickers" style="display: inline-block; padding-inline: 10px;">Current Autoclicker Clicker Cost: 20.00 Autoclickers</div><div id="autoclickerClickerCostDecreasePrice" style="display: inline-block; padding-inline: 10px; color: gold;">upgrade Price: 200.00 Cookies</div>
           <p></p>
-          <button type="button" id="upgrade_3">Increased Production</button> <div id="totalProductionUpgrades" style="display: inline-block; padding-inline: 10px;">Current Autoclicker Production: 4/s</div>
+          <button type="button" id="upgrade_3">Increased Production</button> <div id="totalProductionUpgrades" style="display: inline-block; padding-inline: 10px;">Current Autoclicker Production: 4/s</div><div id="autoclickerProductionIncreasePrice" style="display: inline-block; padding-inline: 10px; color: gold;">upgrade Price: 200.00 Cookies</div>
         </div>
     </div>
-<div id="versionNumber" style="position: fixed; bottom: 0; color: #ffffff;">V1.2.11 PUBLIC</div>
+<div id="versionNumber" style="position: fixed; bottom: 0; color: #ffffff;">V1.3.0 PUBLIC</div>
 </body>
 </html>
