@@ -199,7 +199,7 @@
         let formattedAutoClickerClickers = AutoClickerClickers.toLocaleString()
         let formattedAutoClickersPerSec = (((AutoClickers * 1) * AutoclickersProductionRate) * 4).toLocaleString()
         let formattedAutoClickerClickersPerSec = (AutoClickerClickers * 4).toLocaleString()
-        let formattedAutoClickersProductionRate = AutoclickersProductionRate.toLocaleString()
+        let formattedAutoClickersProductionRate = (AutoclickersProductionRate * 4).toLocaleString()
         document.title = "this mf has " + formattedCookies + " cookies";
         document.getElementById("cookieDisplay").innerHTML = formattedCookies;
         document.getElementById("cookiePerSecondDisplay").innerHTML = "Cookies Per Second (CPS/s) " + formattedAutoClickersPerSec + "/s";
@@ -208,7 +208,7 @@
         document.getElementById("numAutoclickerClickers").innerHTML = formattedAutoClickerClickers + "x Autoclicker Clickers";
         document.getElementById("totalPriceDecreaseAutoclickers").innerHTML = "Current Autoclicker Cost: " + AutoClickerCost + " Cookies";
         document.getElementById("totalPriceDecreaseAutoclickerClickers").innerHTML = "Current Autoclicker Clicker Cost: " + AutoClickerClickerCost + " AutoClickers";
-        document.getElementById("totalProductionUpgrades").innerHTML = "Current Autoclicker Production: " + (formattedAutoClickersProductionRate * 4) + "/s";
+        document.getElementById("totalProductionUpgrades").innerHTML = "Current Autoclicker Production: " + formattedAutoClickersProductionRate + "/s";
     };
 
     function saveProgress() {
