@@ -50,7 +50,9 @@
                         const CostReductionUpgradesAutoclickerClickerFromJSON = jsonData.CostReductionUpgradesAutoclickerClicker;
                         const AutoClickerCostFromJSON = jsonData.AutoClickerCost;
                         const AutoClickerClickerCostFromJSON = jsonData.AutoClickerClickerCost;
-                        const AutoclickersProductionRateFromJSON = jsonData.AutoclickersProductionRate
+                        const PriceDecreaseCostFromJSON = jsonData.PriceDecreaseCost;
+                        const ProductionIncreaseCostFromJSON = jsonData.ProductionIncreaseCost;
+                        const AutoclickersProductionRateFromJSON = jsonData.AutoclickersProductionRate;
 
                         cookies = cookiesFromJSON;
                         AutoClickers = AutoClickersFromJSON;
@@ -59,6 +61,8 @@
                         CostReductionUpgradesAutoclickerClicker = CostReductionUpgradesAutoclickerClickerFromJSON;
                         AutoClickerCost = AutoClickerCostFromJSON;
                         AutoClickerClickerCost = AutoClickerClickerCostFromJSON;
+                        PriceDecreaseCost = PriceDecreaseCostFromJSON;
+                        ProductionIncreaseCost = ProductionIncreaseCostFromJSON;
                         AutoclickersProductionRate = AutoclickersProductionRateFromJSON;
                     } catch (error) {
                         console.error('Error parsing JSON:', error);
@@ -126,6 +130,8 @@
         if (cookies >= AutoClickerCost) {
             cookies = cookies - AutoClickerCost;
             AutoClickers++;
+            AutoClickerCost = Math.round((AutoClickerCost + (AutoClickerCost * 0.20)));
+            console.log(AutoClickerCost)
             showToast("Autoclicker Purchased", "#333", "#000")
         } else {
             showToast("You cannot afford an autoclicker!", "rgb(121, 28, 28)")
@@ -136,6 +142,7 @@
         if (AutoClickers >= AutoClickerClickerCost) {
             AutoClickers = AutoClickers - AutoClickerClickerCost;
             AutoClickerClickers++;
+            AutoClickerClickerCost = Math.round((AutoClickerClickerCost + (AutoClickerClickerCost * 0.20)));
             showToast("Autoclicker Clicker Purchased", "#333", "#000")
         } else {
             showToast("You cannot afford an autoclicker clicker!", "rgb(121, 28, 28)")
@@ -147,6 +154,7 @@
             cookies = cookies - PriceDecreaseCost;
             AutoClickerCost = (AutoClickerCost - (AutoClickerCost * 0.05)).toFixed(2);
             CostReductionUpgradesAutoclicker++;
+            PriceDecreaseCost = Math.round((PriceDecreaseCost + (PriceDecreaseCost * 0.20)));
             showToast("Decreased autoclicker price by 5%", "#333", "#000")
         } else {
             showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
@@ -158,6 +166,7 @@
             cookies = cookies - PriceDecreaseCost;
             AutoClickerClickerCost = (AutoClickerClickerCost - (AutoClickerClickerCost * 0.05)).toFixed(2);
             CostReductionUpgradesAutoclickerClicker++;
+            PriceDecreaseCost = Math.round((PriceDecreaseCost + (PriceDecreaseCost * 0.20)));
             showToast("Decreased autoclicker clicker price by 5%", "#333", "#000")
         } else {
             showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
@@ -167,7 +176,8 @@
     function upgradeMoreCookiesPerClick() {
         if (cookies >= ProductionIncreaseCost) {
             cookies = cookies - ProductionIncreaseCost;
-            AutoclickersProductionRate++
+            AutoclickersProductionRate++;
+            ProductionIncreaseCost = Math.round((ProductionIncreaseCost + (ProductionIncreaseCost * 0.20)));
             showToast("Increased autoclicker production by 4/s", "#333", "#000")
         } else {
             showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
@@ -213,7 +223,7 @@
         document.getElementById("totalPriceDecreaseAutoclickerClickers").innerHTML = "Current Autoclicker Clicker Cost: " + AutoClickerClickerCost + " AutoClickers";
         document.getElementById("totalProductionUpgrades").innerHTML = "Current Autoclicker Production: " + formattedAutoClickersProductionRate + "/s";
         document.getElementById("autoclickerPrice").innerHTML = "Autoclicker Price: " + AutoClickerCost + " Cookies";
-        document.getElementById("autoclickerClickerPrice").innerHTML = "Autoclicker Clicker Price: " + AutoClickerClickerCost + " Cookies";
+        document.getElementById("autoclickerClickerPrice").innerHTML = "Autoclicker Clicker Price: " + AutoClickerClickerCost + " Autoclickers";
         document.getElementById("autoclickerCostDecreasePrice").innerHTML = "Upgrade Price: " + PriceDecreaseCost + " Cookies";
         document.getElementById("autoclickerClickerCostDecreasePrice").innerHTML = "Upgrade Price: " + PriceDecreaseCost + " Cookies";
         document.getElementById("autoclickerProductionIncreasePrice").innerHTML = "Upgrade Price: " + ProductionIncreaseCost + " Cookies";
@@ -234,6 +244,8 @@
                         "CostReductionUpgradesAutoclickerClicker" : CostReductionUpgradesAutoclickerClicker,
                         "AutoClickerCost" : AutoClickerCost,
                         "AutoClickerClickerCost" : AutoClickerClickerCost,
+                        "PriceDecreaseCost" : PriceDecreaseCost,
+                        "ProductionIncreaseCost" : ProductionIncreaseCost,
                         "AutoclickersProductionRate" : AutoclickersProductionRate};
         var allVarsString = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(allVars));
         var a = document.createElement('a');
