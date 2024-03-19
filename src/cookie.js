@@ -186,7 +186,7 @@
         document.getElementById("numAutoclickers").innerHTML = formattedAutoClickers + "x Autoclickers";
         document.getElementById("numAutoclickerClickers").innerHTML = formattedAutoClickerClickers + "x Autoclicker Clickers";
         document.getElementById("totalPriceDecreaseAutoclickers").innerHTML = "Current Autoclicker Cost: " + AutoClickerCost + " Cookies";
-        document.getElementById("totalPriceDecreaseAutoclickerClickers").innerHTML = "Current Autoclicker Clicker Cost: " + AutoClickerClickerCost + " Cookies";
+        document.getElementById("totalPriceDecreaseAutoclickerClickers").innerHTML = "Current Autoclicker Clicker Cost: " + AutoClickerClickerCost + " AutoClickers";
         document.getElementById("totalProductionUpgrades").innerHTML = "Current Autoclicker Production: " + (AutoclickersProductionRate * 4) + "/s";
     };
 
