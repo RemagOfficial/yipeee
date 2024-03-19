@@ -25,6 +25,9 @@
 
     document.addEventListener('DOMContentLoaded', function() {
 
+        console.log("Hey, what are you doing here?")
+        console.log("Why'd you open this?")
+
         fileInput.addEventListener('change', function(event) {
             const file = event.target.files[0];
 
@@ -69,11 +72,10 @@
 
     function receiveCookie(amount) {
         cookies += amount;
-        let clicks = document.getElementById("clicks");
-        clicks.className = "show";
-        setTimeout(function () {
-            clicks.className = clicks.className.replace("show", "");
-        }, 3000);
+        document.getElementById("clicks").style.display = "block";
+        setTimeout(() => {
+            document.getElementById("clicks").style.display = "none";
+          }  , 100);
     }
 
     function receiveCookieAuto(amount) {
