@@ -162,7 +162,7 @@
         if (cookies >= ProductionIncreaseCost) {
             cookies = cookies - ProductionIncreaseCost;
             AutoclickersProductionRate++
-            showToast("Increased autoclicker production by 1", "#333", "#000")
+            showToast("Increased autoclicker production by 4/s", "#333", "#000")
         } else {
             showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
         }
