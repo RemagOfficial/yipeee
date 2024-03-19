@@ -1,0 +1,123 @@
+@font-face {
+    font-family: "Kongtext";
+    src: url('assets/fonts/kongtext.ttf') format('truetype');
+    src: url('assets/fonts/kongtext.woff2') format('woff2');
+  }
+  .content {
+    /* max-width: 500px;
+    margin: auto; */
+    text-align: center;
+    color: #fff;
+    font-family: "Kongtext";
+    font-size: small;
+    user-select: none;
+  }
+  
+  button {
+    background: url(assets/textures/button.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 1px;
+    border: white;
+    color: white;
+  }
+      /* The snackbar - position it at the bottom and in the middle of the screen */
+  #toasts {
+      visibility: hidden; /* Hidden by default. Visible on click */
+      min-width: 250px; /* Set a default minimum width */
+      max-height: min-content;
+      margin-left: -125px; /* Divide value of min-width by 2 */
+      background-color: #333; /* Black background color */
+      color: #fff; /* White text color */
+      text-align: center; /* Centered text */
+      border-radius: 2px; /* Rounded borders */
+      padding: 16px; /* Padding */
+      position: fixed; /* Sit on top of the screen */
+      z-index: 1; /* Add a z-index if needed */
+      left: 50%; /* Center the snackbar */
+      bottom: 30px; /* 30px from the bottom */
+    }
+    
+    /* Show the snackbar when clicking on a button (class added with JavaScript) */
+    #toasts.show {
+      visibility: visible; /* Show the snackbar */
+      /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+      However, delay the fade out process for 2.5 seconds */
+      -webkit-animation: fadeintoasts 0.5s, fadeouttoasts 0.5s 2.5s;
+      animation: fadeintoasts 0.5s, fadeouttoasts 0.5s 2.5s;
+    }
+    
+    /* Animations to fade the snackbar in and out */
+    @-webkit-keyframes fadeintoasts {
+      from {bottom: 0; opacity: 0;}
+      to {bottom: 30px; opacity: 1;}
+    }
+    
+    @keyframes fadeintoasts {
+      from {bottom: 0; opacity: 0;}
+      to {bottom: 30px; opacity: 1;}
+    }
+    
+    @-webkit-keyframes fadeouttoasts {
+      from {bottom: 30px; opacity: 1;}
+      to {bottom: 0; opacity: 0;}
+    }
+    
+    @keyframes fadeouttoasts {
+      from {bottom: 30px; opacity: 1;}
+      to {bottom: 0; opacity: 0;}
+    }
+  
+    #clicks {
+      position: absolute;
+      left: 52%;
+      top: 19%;
+    }
+  
+    #cookie {
+      height: 160px;
+      width: 160px;
+      background: url(assets/textures/cookie.png);
+      border: none;
+    }
+  
+    #cookie:active {
+      transform: scale(0.9);
+    }
+  
+    #slideMenuArrow {
+      z-index: 1;
+      margin: 0;
+      position: absolute;
+      left: 0;
+      top: 30%;
+    }
+  
+    #slideMenuDiv {
+      position: absolute;
+      left: 50px;
+      top: 10%;
+    }
+  
+    #changeLog {
+      position: absolute;
+      left: 50px;
+      top: 10%;
+      padding-top: 10px;
+      z-index: 0;
+      width: 480px;
+      height: 80%;
+      background-color: #252525;
+      text-align: left;
+      overflow-y: scroll;
+      scrollbar-width: none;
+    }
+  
+    #sticky {
+      position: sticky;
+      top: 0;
+      left: 0;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: #161616;
+    }
