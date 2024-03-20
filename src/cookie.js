@@ -25,6 +25,19 @@
 
     const fileInput = document.getElementById('saveImport');
 
+    var hook = true;
+    function onBeforeUnload(e) {
+        if (hook) {
+            e.preventDefault();
+            e.returnValue = 'Warning: This game doesn\'t save automatically, use the button';
+            return;
+        }
+    
+        delete e['returnValue'];
+    }
+    
+    window.addEventListener('beforeunload', onBeforeUnload);
+
     document.addEventListener('DOMContentLoaded', function() {
 
         console.log("Hey, what are you doing here?")
@@ -253,6 +266,7 @@
         a.download = `save-${year}-${month}-${day}-${minutes}:${seconds}.json`;
         a.innerHTML = '';
         a.click();
+        hook = false;
     }
 
     setInterval(everyTick, 250); // Repeat every 1/4 second
