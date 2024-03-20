@@ -5,7 +5,7 @@
     let AutoClickerClickerCost = 20;
     let PriceDecreaseCost = 200;
     let ProductionIncreaseCost = 200;
-    let cookies = 1000000;
+    let cookies = 0;
 
 
     let shopShown = false;
