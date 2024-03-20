@@ -23,21 +23,19 @@
 
 /**
  * Event handler for the 'beforeunload' event.
+ * Prevents the default action and sets a warning message
+ * if the hook is enabled.
  *
  * @param {Event} event - The event object.
  */
-function onBeforeUnloadEvent(event) {
-    // If the hook is true, prevent the default action and set a warning message.
+function handleBeforeUnload(event) {
     if (hook) {
-        event.preventDefault(); // Prevents the default action of leaving the page.
-        event.returnValue = 'Warning: This game does not autosave. Use the download button.'; // Sets the return value of the event.
+        event.preventDefault();
+        event.returnValue = 'Warning: Game does not autosave. Use download button.';
     }
-
-    // Deletes the return value of the event.
-    delete event.returnValue;
 }
     
-    window.addEventListener('beforeunload', onBeforeUnloadEvent);
+    window.addEventListener('beforeunload', handleBeforeUnload);
 
     document.addEventListener('DOMContentLoaded', function() {
 
@@ -123,15 +121,6 @@ function receiveCookie(amount) {
     }, 100);
 }
 
-    /*
-    function receiveCookieAuto(amount) {
-        cookies += amount;
-        let formattedCookies = cookies.toLocaleString()
-        document.getElementById("cookieDisplay").innerHTML = formattedCookies;
-        document.title = "this mf has " + formattedCookies + " cookies";
-    }
-    */
-
 /**
  * Displays a toast message with the given text, colour, and border color.
  *
@@ -139,21 +128,16 @@ function receiveCookie(amount) {
  * @param {string} colour - The background color of the toast.
  * @param {string} borderColor - The border color of the toast.
  */
-function showToast(text, colour, borderColor) {
-    // Get the toast element
-    let toaster = document.getElementById("toasts");
-
-    // Set the text, colour, and border color of the toast
-    toaster.innerHTML = text;
-    toaster.style.backgroundColor = colour;
-    toaster.style.borderColor = borderColor;
-
-    // Add the "show" class to make the toast visible
-    toaster.className = "show";
-
-    // After 3 seconds, remove the "show" class to hide the toast
-    setTimeout(function () {
-        toaster.className = toaster.className.replace("show", "");
+function showToast(text, colour, borderColour, dropShadowEnabled = true) {
+    const toaster = document.getElementById("toasts"); // Get the toast element
+    toaster.innerHTML = text; // Set the text of the toast
+    toaster.style.backgroundColor = colour; // Set the background color of the toast
+    toaster.style.setProperty('border', `1px solid ${borderColour}`); // Set the border color of the toast using a template string
+    toaster.style.boxShadow = dropShadowEnabled ? '2px 2px 4px rgba(0, 0, 0, 0.5)' : 'none'; // Set the box shadow of the toast (if enabled)
+    
+    toaster.classList.add("show"); // Add the "show" class to make the toast visible
+    setTimeout(function () { // After 3 seconds, remove the "show" class to hide the toast
+        toaster.classList.remove("show");
     }, 3000)
 }
 
