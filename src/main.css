@@ -113,11 +113,19 @@
       scrollbar-width: none;
     }
   
-    #sticky {
+    #stickyTop {
       position: sticky;
       top: 0;
       left: 0;
-      padding-top: 10px;
-      padding-bottom: 10px;
+    }
+
+    #changelogTitle {
+      padding-top: 20px;
+      padding-bottom: 20px;
       background-color: #161616;
+    }
+
+    #ko-fi {
+      height: 30%;
+      width: 30%;
     }

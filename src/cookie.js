@@ -1,3 +1,4 @@
+
 (function () {
     console.debug("Cookie clicker init");
     let AutoClickerCost = 20;
