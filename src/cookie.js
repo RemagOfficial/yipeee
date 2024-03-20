@@ -371,11 +371,11 @@ const everyTick = () => {
     // Update the UI
     document.title = `this mf has ${cookiesStr} cookies`;
     document.getElementById("cookieDisplay").textContent = cookiesStr;
-    document.getElementById("cookiePerSecondDisplay").textContent = `Cookies Per Second (CPS/s) ${(autoclickersCookies/4).toLocaleString()} /s`;
-    document.getElementById("clickersPerSecondDisplay").textContent = `Clickers Per Second (CPS/s) ${autoclickerClickersCookies.toLocaleString()} /s`;
+    document.getElementById("cookiePerSecondDisplay").textContent = `Cookies Per Second (CPS/s) ${(autoclickersCookies/4).toLocaleString()}/s`;
+    document.getElementById("clickersPerSecondDisplay").textContent = `Clickers Per Second (CPS/s) ${autoclickerClickersCookies.toLocaleString()}/s`;
     document.getElementById("numAutoclickers").textContent = `${autoClickersStr}x Autoclickers`;
     document.getElementById("numAutoclickerClickers").textContent = `${autoClickerClickersStr}x Autoclicker Clickers`;
-    document.getElementById("totalProductionUpgrades").textContent = `Current Production Rate: ${productionRateStr} /s`;
+    document.getElementById("totalProductionUpgrades").textContent = `Current Production Rate: ${productionRateStr}/s`;
     document.getElementById("autoclickerPrice").textContent = `Autoclicker Price: ${autoClickerCostStr} Cookies`;
     document.getElementById("autoclickerClickerPrice").textContent = `Autoclicker Clicker Price: ${autoClickerClickerCostStr} Autoclickers`;
     document.getElementById("autoclickerCostDecreasePrice").textContent = `Upgrade Price: ${priceDecreaseCostStr} Cookies`;
