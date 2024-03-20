@@ -5,12 +5,13 @@
     let AutoClickerClickerCost = 20;
     let PriceDecreaseCost = 200;
     let ProductionIncreaseCost = 200;
-    let cookies = 0;
+    let cookies = 1000000;
 
 
     let shopShown = false;
     let upgradeShown = false;
     let slideMenuShown = false;
+    let shopMenuShown = false;
 
     let AutoclickersProductionRate = 1;
 
@@ -104,30 +105,6 @@
         document.title = "this mf has " + formattedCookies + " cookies";
     }
 
-    function toggleShopDisplay() {
-        if (shopShown) {
-            AutoClickers > 0;
-            document.getElementById("shopMenuDiv").style.display = "none";
-            shopShown = false;
-        } else {
-            document.getElementById("shopMenuDiv").style.display = "block";
-            shopShown = true;
-        }
-
-    }
-
-    function toggleUpgradeDisplay() {
-        if (upgradeShown) {
-            AutoClickers > 0;
-            document.getElementById("upgradeMenuDiv").style.display = "none";
-            upgradeShown = false;
-        } else {
-            document.getElementById("upgradeMenuDiv").style.display = "block";
-            upgradeShown = true;
-        }
-
-    }
-
     function showToast(text, colour, borderColor) {
         let toaster = document.getElementById("toasts");
         toaster.innerHTML = text;
@@ -144,7 +121,7 @@
         if (cookies >= AutoClickerCost) {
             cookies = cookies - AutoClickerCost;
             AutoClickers++;
-            AutoClickerCost = Math.round((AutoClickerCost + (AutoClickerCost * 0.20)));
+            AutoClickerCost = Math.round((Math.round(AutoClickerCost) + (Math.round(AutoClickerCost) * 0.20)));
             showToast("Autoclicker Purchased", "#333", "#000")
         } else {
             showToast("You cannot afford an autoclicker!", "rgb(121, 28, 28)")
@@ -155,7 +132,7 @@
         if (AutoClickers >= AutoClickerClickerCost) {
             AutoClickers = AutoClickers - AutoClickerClickerCost;
             AutoClickerClickers++;
-            AutoClickerClickerCost = Math.round((AutoClickerClickerCost + (AutoClickerClickerCost * 0.20)));
+            AutoClickerClickerCost = Math.round((Math.round(AutoClickerClickerCost) + (Math.round(AutoClickerClickerCost) * 0.20)));
             showToast("Autoclicker Clicker Purchased", "#333", "#000")
         } else {
             showToast("You cannot afford an autoclicker clicker!", "rgb(121, 28, 28)")
@@ -167,7 +144,7 @@
             cookies = cookies - PriceDecreaseCost;
             AutoClickerCost = (AutoClickerCost - (AutoClickerCost * 0.05)).toFixed(2);
             CostReductionUpgradesAutoclicker++;
-            PriceDecreaseCost = Math.round((PriceDecreaseCost + (PriceDecreaseCost * 0.20)));
+            PriceDecreaseCost = Math.round((Math.round(PriceDecreaseCost) + (Math.round(PriceDecreaseCost) * 0.20)));
             showToast("Decreased autoclicker price by 5%", "#333", "#000")
         } else {
             showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
@@ -179,7 +156,7 @@
             cookies = cookies - PriceDecreaseCost;
             AutoClickerClickerCost = (AutoClickerClickerCost - (AutoClickerClickerCost * 0.05)).toFixed(2);
             CostReductionUpgradesAutoclickerClicker++;
-            PriceDecreaseCost = Math.round((PriceDecreaseCost + (PriceDecreaseCost * 0.20)));
+            PriceDecreaseCost = Math.round((Math.round(PriceDecreaseCost) + (Math.round(PriceDecreaseCost) * 0.20)));
             showToast("Decreased autoclicker clicker price by 5%", "#333", "#000")
         } else {
             showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
@@ -190,7 +167,7 @@
         if (cookies >= ProductionIncreaseCost) {
             cookies = cookies - ProductionIncreaseCost;
             AutoclickersProductionRate++;
-            ProductionIncreaseCost = Math.round((ProductionIncreaseCost + (ProductionIncreaseCost * 0.20)));
+            ProductionIncreaseCost = Math.round((Math.round(ProductionIncreaseCost) + (Math.round(ProductionIncreaseCost) * 0.20)));
             showToast("Increased autoclicker production by 4/s", "#333", "#000")
         } else {
             showToast("You cannot afford this upgrade!", "rgb(121, 28, 28)")
@@ -212,6 +189,21 @@
 
     }
 
+    function openShopMenu() {
+        if (shopMenuShown) {
+            document.getElementById("shop").style.display = "none";
+            document.getElementById("shopMenuArrow").style.right = "0px";
+            document.getElementById("shopMenuArrow").src = "src/assets/textures/shopArrow.png"
+            shopMenuShown = false;
+        } else {
+            document.getElementById("shop").style.display = "block";
+            document.getElementById("shopMenuArrow").style.right = "600px";
+            document.getElementById("shopMenuArrow").src = "src/assets/textures/shopArrowIn.png"
+            shopMenuShown = true;
+        }
+
+    }
+
     const everyTick = () => {
         if (AutoClickers > 0) {
             let AutoclickersCookies = ((AutoClickers * 1) * AutoclickersProductionRate);
@@ -226,20 +218,22 @@
         let formattedAutoClickersPerSec = (((AutoClickers * 1) * AutoclickersProductionRate) * 4).toLocaleString()
         let formattedAutoClickerClickersPerSec = (AutoClickerClickers * 4).toLocaleString()
         let formattedAutoClickersProductionRate = (AutoclickersProductionRate * 4).toLocaleString()
+        let formattedAutoClickerCost = Math.round(AutoClickerCost).toLocaleString()
+        let formattedAutoClickerClickerCost = Math.round(AutoClickerClickerCost).toLocaleString()
+        let formattedPriceDecreaseCost = Math.round(PriceDecreaseCost).toLocaleString()
+        let formattedProductionIncreaseCost = Math.round(ProductionIncreaseCost).toLocaleString()
         document.title = "this mf has " + formattedCookies + " cookies";
         document.getElementById("cookieDisplay").innerHTML = formattedCookies;
         document.getElementById("cookiePerSecondDisplay").innerHTML = "Cookies Per Second (CPS/s) " + formattedAutoClickersPerSec + "/s";
         document.getElementById("clickersPerSecondDisplay").innerHTML = "Clickers Per Second (CPS/s) " + formattedAutoClickerClickersPerSec + "/s";
         document.getElementById("numAutoclickers").innerHTML = formattedAutoClickers + "x Autoclickers";
         document.getElementById("numAutoclickerClickers").innerHTML = formattedAutoClickerClickers + "x Autoclicker Clickers";
-        document.getElementById("totalPriceDecreaseAutoclickers").innerHTML = "Current Autoclicker Cost: " + AutoClickerCost + " Cookies";
-        document.getElementById("totalPriceDecreaseAutoclickerClickers").innerHTML = "Current Autoclicker Clicker Cost: " + AutoClickerClickerCost + " AutoClickers";
-        document.getElementById("totalProductionUpgrades").innerHTML = "Current Autoclicker Production: " + formattedAutoClickersProductionRate + "/s";
-        document.getElementById("autoclickerPrice").innerHTML = "Autoclicker Price: " + AutoClickerCost + " Cookies";
-        document.getElementById("autoclickerClickerPrice").innerHTML = "Autoclicker Clicker Price: " + AutoClickerClickerCost + " Autoclickers";
-        document.getElementById("autoclickerCostDecreasePrice").innerHTML = "Upgrade Price: " + PriceDecreaseCost + " Cookies";
-        document.getElementById("autoclickerClickerCostDecreasePrice").innerHTML = "Upgrade Price: " + PriceDecreaseCost + " Cookies";
-        document.getElementById("autoclickerProductionIncreasePrice").innerHTML = "Upgrade Price: " + ProductionIncreaseCost + " Cookies";
+        document.getElementById("totalProductionUpgrades").innerHTML = "Current Production Rate: " + formattedAutoClickersProductionRate + "/s";
+        document.getElementById("autoclickerPrice").innerHTML = "Autoclicker Price: " + formattedAutoClickerCost + " Cookies";
+        document.getElementById("autoclickerClickerPrice").innerHTML = "Autoclicker Clicker Price: " + formattedAutoClickerClickerCost + " Autoclickers";
+        document.getElementById("autoclickerCostDecreasePrice").innerHTML = "Upgrade Price: " + formattedPriceDecreaseCost + " Cookies";
+        document.getElementById("autoclickerClickerCostDecreasePrice").innerHTML = "Upgrade Price: " + formattedPriceDecreaseCost + " Cookies";
+        document.getElementById("autoclickerProductionIncreasePrice").innerHTML = "Upgrade Price: " + formattedProductionIncreaseCost + " Cookies";
     };
 
     function saveProgress() {
@@ -272,13 +266,12 @@
     setInterval(everyTick, 250); // Repeat every 1/4 second
 
     document.getElementById("cookie").onclick = () => receiveCookie(1);
-    document.getElementById("toggleShop").onclick = () => toggleShopDisplay();
     document.getElementById("shop_1").onclick = () => purchaseAutoClicker();
     document.getElementById("shop_2").onclick = () => purchaseAutoClickerClicker();
-    document.getElementById("toggleUpgrade").onclick = () => toggleUpgradeDisplay();
     document.getElementById("upgrade_1").onclick = () => upgradeLowerPricesAutoclickers();
     document.getElementById("upgrade_2").onclick = () => upgradeLowerPricesAutoclickerClickers();
     document.getElementById("upgrade_3").onclick = () => upgradeMoreCookiesPerClick();
     document.getElementById("downloadSave").onclick = () => saveProgress();
     document.getElementById("slideMenuArrow").onclick = () => openSlideMenu();
+    document.getElementById("shopMenuArrow").onclick = () => openShopMenu();
 })();

@@ -92,11 +92,13 @@
       left: 0;
       top: 30%;
     }
-  
-    #slideMenuDiv {
+
+    #shopMenuArrow {
+      z-index: 1;
+      margin: 0;
       position: absolute;
-      left: 50px;
-      top: 10%;
+      right: 0;
+      top: 30%;
     }
   
     #changeLog {
@@ -112,6 +114,20 @@
       overflow-y: scroll;
       scrollbar-width: none;
     }
+
+    #shop {
+      position: absolute;
+      right: 50px;
+      top: 10%;
+      padding-top: 10px;
+      z-index: 0;
+      width: 580px;
+      height: 80%;
+      background-color: #252525;
+      text-align: left;
+      overflow-y: scroll;
+      scrollbar-width: none;
+    }
   
     #stickyTop {
       position: sticky;
@@ -120,6 +136,12 @@
     }
 
     #changelogTitle {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      background-color: #161616;
+    }
+
+    #shopTitle {
       padding-top: 20px;
       padding-bottom: 20px;
       background-color: #161616;
