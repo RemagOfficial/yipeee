@@ -26,7 +26,7 @@ jobs:
   deploy:
     environment:
       name: shork-testing
-      url: ${{ steps.deployment.outputs.page_url }}/shork
+      url: ${{ steps.deployment.outputs.page_url }}shork
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
