@@ -75,14 +75,20 @@
     }
   
     #cookie {
-      height: 160px;
-      width: 160px;
-      background: url(assets/textures/cookie.png);
+      height: 380px;
+      width: 970px;
+      background: url(assets/textures/sharkyBetter.png);
       border: none;
+      background-repeat: no-repeat;
+      transform: scale(0.5);
     }
   
-    #cookie:active {
-      transform: scale(0.9);
+    #cookie:active:not(:hover) {
+      transform: scale(0.45);
+    }
+
+    #cookie:hover:not(:active) {
+      transform: scale(0.55);
     }
   
     #slideMenuArrow {
